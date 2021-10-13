@@ -1,0 +1,273 @@
+﻿@model IEnumerable<EasyFly.Models.FlightInfo>
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+
+    var TotalFlights = ViewBag.TotalFlights;
+    var TotalPassengerFlights = ViewBag.TotalPassengerFlights;
+    var TotalCargoFlights = ViewBag.TotalCargoFlights;
+    var TotalNextFlights = ViewBag.TotalNextFlights;
+}
+
+<!doctype html>
+<html lang="en">
+
+<body>
+
+    <!-- General Report -->
+    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalFlights</h1>
+                        <div class="h2 text-green-700 fad fa-plane"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Flights</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalPassengerFlights</h1>
+                        <div class="h2 text-indigo-700 fad fa-users"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Passenger Flights</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalCargoFlights</h1>
+                        <div class="h2 text-red-700 fad fa-luggage-cart"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Cargo Flights</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalNextFlights</h1>
+                        <div class="h2 text-yellow-700 fad fa-plane-departure"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Next Flights</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+
+    </div>
+
+    <br />
+    <!-- Start Data Table -->
+    <div class="card col-span-2 xl:col-span-1">
+
+        <div class="card-header" style="font-weight:bold">Next Flight Schedule Data - <p>@Html.ActionLink("Add Flight", "Create")</p></div>
+
+        <table class="table-auto w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.FlightID)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.AircraftInfo.AC_Name)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.FlightType)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.From1)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.To1)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.DepartureDate)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.ClassType)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.Fare)
+                    </th>
+                    <th class="px-4 py-2 border-r"></th>
+                </tr>
+
+            </thead>
+
+            <tbody class="text-gray-600">
+
+                @foreach (var item in Model)
+                {
+                    if (item.DepartureDate > DateTime.Now)
+                    {
+                        <tr>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.FlightID)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.AircraftInfo.AC_Name)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.FlightType)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.From1)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.To1)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.DepartureDate)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.ClassType)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.Fare)
+                            </td>
+
+
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.FlightID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.FlightID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.FlightID })
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <br />
+    <!-- Start Data Table -->
+    <div class="card col-span-2 xl:col-span-1">
+        <div class="card-header" style="font-weight:bold">Previous Schedule Data -</div>
+
+        <table class="table-auto w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.FlightID)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.AircraftInfo.AC_Name)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.FlightType)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.From1)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.To1)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.DepartureDate)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.ClassType)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.Fare)
+                    </th>
+                    <th class="px-4 py-2 border-r"></th>
+                </tr>
+
+            </thead>
+
+            <tbody class="text-gray-600">
+
+                @foreach (var item in Model)
+                {
+                    if (item.DepartureDate < DateTime.Now)
+                    {
+                        <tr>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.FlightID)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.AircraftInfo.AC_Name)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.FlightType)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.From1)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.To1)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.DepartureDate)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.ClassType)
+                            </td>
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.DisplayFor(modelItem => item.Fare)
+                            </td>
+
+
+                            <td class="border border-l-0 px-4 py-2">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.FlightID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.FlightID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.FlightID })
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Packages";
+}
+
+<div class="row border-bottom mb-3">
+    <h2>Packages</h2>
+</div>
+
+
+@{
+    <div class="row">
+        @{
+            foreach (var item in ViewBag.packages)
+            {
+                <div class="col-md-4">
+                    <div class="card" style="width:18rem; margin-top:20px">
+                        <img src="@Url.Content(@item.HotelImage)" width="60" height="160" class="card-img-top" alt="Hotel Image">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.PackageSubDesc</h5>
+                            <p class="card-text">@item.Destination</p>
+                            <p class="card-text font-weight-bold">BDT @item.PackagePrice <font color="#999999" size="1px">per person</font></p>
+                            <a href="/SingleUserLogs/PackageDetail?pid=@item.PackageID" class="btn btn-info dBtn">Detail</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <br />
+}
+
+<style>
+    .card {
+        background-color: antiquewhite;
+        border-radius: 8px;
+        box-shadow: 1px 1px 1px 1px grey;
+    }
+
+        .card:hover {
+            background-color: burlywood;
+            transition: 600ms;
+            border-radius: 8px;
+            box-shadow: 2px 2px 2px 2px navy;
+        }
+
+    .dBtn {
+        border-radius: 2px 20px 2px 20px;
+    }
+</style>

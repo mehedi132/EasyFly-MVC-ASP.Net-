@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "PackageDetail";
+    var package = ViewBag.package;
+
+    string[] detailsList = package.PackageDesc.Split('#');
+}
+
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let cost = parseInt($('#price').text());
+        $("#noOfPerson").change(function () {
+            let noOfPerson = $("#noOfPerson :selected").text();
+            let finalCost = cost * parseInt(noOfPerson);
+            let totalCost = "Total: <b>BDT " + noOfPerson + " x " + cost.toString() + "</b > ";
+            $('#totalLabel').html(totalCost);
+            $('#totalCost').val(finalCost);
+        });
+    });
+</script>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:xx-large; font-weight:bold">@package.HotelName</h1><br />
+            <h3 style="font-weight:400">@package.PackageSubDesc @@ @package.Destination</h3><br />
+            <h3 style="margin-bottom:20px">BDT @package.PackagePrice PER PERSON</h3>
+            <h5>Package Deatals</h5>
+            <ul>
+                @{
+                    foreach (var ul in detailsList)
+                    {
+                        <li>@ul</li>
+                    }
+                }
+
+            </ul>
+            <label id="price" hidden>@package.PackagePrice</label>
+        </div>
+
+        <div class="col-3">
+            <img src="@Url.Content(package.HotelImage)" class="card-img-top" alt="Hotel Image" />
+            <div class="row mt-4">
+                @using (Html.BeginForm("ConfirmPackageBooking", "SingleUserLogs", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+
+                        <div class="row">
+                            <label for="checkInDate">Check-in Date</label><br />
+                            <input id="checkInDate" class="form-control" type="date" name="checkInDate" required />
+                        </div>
+                        <div class="row">
+                            <label for="noOfPerson">Number of Person:</label><br />
+                            <select id="noOfPerson" class="form-control " required name="noOfPerson">
+
+                                @{
+                                    for (int i = 1; i <= 4; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="row">
+                            <input id="totalCost" type="text" class="form-control" name="totalCost" hidden />
+                        </div>
+                        <div class="row">
+                            <input id="packageId" type="text" class="form-control" name="packageId" value="@package.PackageID" hidden />
+                        </div>
+
+                        <div class="row mt-3">
+                            <label id="totalLabel">Total: <b>BDT 1 x @package.PackagePrice</b> </label>
+                        </div>
+
+                        <div class="form-group row mt-4">
+                            <div>
+                                <input style=" border-radius: 2px 10px 2px 10px;" type="submit" class="btn btn-dark" value="Book Now" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<br />

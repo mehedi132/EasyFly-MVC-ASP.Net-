@@ -1,0 +1,23 @@
+﻿@model EasyFly.Models.CompanyUserLog
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Welcome @Model.C_Name</h2>
+
+    <p class="btn-bs-success"> @Html.ActionLink("Book A Flight!", "SearchForFlight", new { id = Model.C_UserID }) </p>
+
+    <p class="btn-bs-success"> @Html.ActionLink("Cancel your Flight!", "CancelBooking", new { id = Model.C_UserID }) </p>
+
+    <!--<p class="btn-bs-success"> Html.ActionLink("See your Flight History", "FlightHistory", new { id = Model.C_UserID }) </p>-->
+
+    <p> @Html.ActionLink("Edit", "Edit", new { id = Model.C_UserID }) </p>
+
+</body>
+</html>

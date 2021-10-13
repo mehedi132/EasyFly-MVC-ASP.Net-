@@ -1,0 +1,173 @@
+﻿@model IEnumerable<EasyFly.Models.CompanyUserLog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+
+    var TotalCompanies = ViewBag.TotalCompanies;
+    var TotalCargos = ViewBag.TotalCargos;
+    var TotalNextCargos = ViewBag.TotalNextCargos;
+}
+
+
+<!doctype html>
+<html lang="en">
+
+<body>
+
+    <!-- General Report -->
+    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalCompanies</h1>
+                        <div class="h2 text-green-700 fad fa-university"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Number of Company Users</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalCargos</h1>
+                        <div class="h2 text-indigo-700 fad fa-luggage-cart"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Cargo</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalNextCargos</h1>
+                        <div class="h2 text-red-700 fad fa-plane-departure"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Next Cargoes</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">0</h1>
+                        <div class="h2 text-yellow-700 fad fa-plane-arrival"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Arrived Cargoes</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+
+    </div>
+
+    <!-- Start Data Table -->
+    <div class="card col-span-2 xl:col-span-1">
+        <div class="card-header"  style="font-weight:bold">Company Users Data</div>
+
+
+        <table class="table-auto w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-r">
+                        Users
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.C_UserID)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.C_Email)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.C_Name)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.DateEstd)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.C_ContactNo)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.C_CountryName)
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody class="text-gray-600">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="border border-l-0 px-4 py-2">
+                            <!--Html.DisplayFor(modelItem => item.C_Photos)-->
+                            <img src="@Url.Content(item.C_Photos)" width="50" height="50" />
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.C_UserID)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.C_Email)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.C_Name)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.DateEstd)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.C_ContactNo)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.C_CountryName)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.ActionLink("Details", "Details", new { id = item.C_UserID }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.C_UserID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.C_UserID }) 
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

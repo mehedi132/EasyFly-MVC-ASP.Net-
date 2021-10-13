@@ -1,0 +1,111 @@
+﻿
+@{ 
+    ViewBag.Title = "Chat";
+
+}
+
+<html>
+<head>    
+    <link href="~/Content/Chat.css" rel="stylesheet" />
+    <style>
+        div.panel-body {
+            overflow: scroll;
+            background: url('http://subtlepatterns.com/patterns/geometry2.png');
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-panel panel panel-default" style="width:100%">
+        <div class="panel-heading">
+            Customer Support
+        </div>
+
+        <div class="panel-body" id="chat" style="height:350px;">
+            <input type="hidden" id="displayname" />
+            <p id="discussion"></p>
+        </div>
+        <br />
+        <div class="panel-footer">
+            <div class="input-group"  style="width:auto">
+                <input id="message" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." />
+                <br />
+                <span class="input-group-btn">
+                    <input type="button" class="btn btn-warning btn-sm" id="sendmessage" value="Send">
+                </span>
+            </div>
+        </div>
+    </div>
+    <br />
+
+
+    @section scripts {
+        <script src="~/Scripts/jquery.signalR-2.4.2.js"></script>
+        <script src="~/signalr/hubs"></script>
+        <script>
+            $(function () {
+
+                var chat = $.connection.chatHub;
+                chat.client.addNewMessageToPage = function (name, message) {
+                    if (name == "admin") {
+                        $('#discussion').append(
+                            '<div style="Width:60%">'
+                            + '<ul class="chat">'
+                            + '<li class="left clearfix">'
+                            + '<span class="chat-img pull-left"> '
+                            + '<img src="https://bootdey.com/img/Content/user_3.jpg" alt = "User Avatar">'
+                            + '</span >'
+                            + '<div class="chat-body clearfix">'
+                            + '<div class="header">'
+                            + '<strong class="primary-font" >'
+                            + htmlEncode(name) + '</strong>'
+                            + '</div>'
+                            + '<p>'
+                            + htmlEncode(message) + '</p>'
+                            + '</div ></li></ul></div>');
+                    }
+
+
+                    else {
+                        $('#discussion').append(
+                            '<div style="Width:60%">'
+                            + '<ul class="chat">'
+                            + '<li class="right clearfix">'
+                            + '<span class="chat-img pull-right"> '
+                            + '<img src="https://bootdey.com/img/Content/user_1.jpg" alt = "User Avatar">'
+                            + '</span >'
+                            + '<div class="chat-body clearfix">'
+                            + '<div class="header">'
+                            + '<strong class="primary-font">'
+                            + htmlEncode(name) + '</strong>'
+                            + '</div>'
+                            + '<p>'
+                            + htmlEncode(message) + '</p>'
+                            + '</div></li></ul></div>');
+                    }
+                };
+
+
+                var a = '@Session["User_Name"]';
+
+                $('#displayname').val(a);
+                //$('#displayname').val(prompt('Enter your name:', ''));
+                $('#message').focus();
+                $.connection.hub.start().done(function () {
+                    $('#sendmessage').click(function () {
+                        chat.server.send($('#displayname').val(), $('#message').val());
+                        $('#message').val('').focus();
+                    });
+                });
+            });
+
+            function htmlEncode(value) {
+                var encodedValue = $('<div />').text(value).html();
+                return encodedValue;
+            }
+        </script>
+    }
+
+</body>
+
+</html>

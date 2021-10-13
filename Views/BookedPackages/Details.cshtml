@@ -1,0 +1,43 @@
+﻿@model EasyFly.Models.BookedPackage
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookedPackage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageInfo.HotelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageInfo.HotelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SingleUserLog.S_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SingleUserLog.S_Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

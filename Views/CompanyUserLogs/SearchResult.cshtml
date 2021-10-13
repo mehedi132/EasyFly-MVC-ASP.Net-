@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "SearchResult";
+}
+
+
+@{
+    if (ViewBag.flightList.Count > 0)
+    {
+        var x = ViewBag.flightList[0];
+        <h2 style="border-bottom:2px solid gray">Found @ViewBag.flightList.Count results for "@x.From1 - @x.To1" on @x.DepartureDate.ToString("dd/MM/yyyy") </h2>
+        <br />
+        <br />
+        <div class="row">
+            @{
+                foreach (var item in ViewBag.flightList)
+                {
+
+                    /*<div class="col-4 pt-4">
+                        <a href="/Home/Booking?flightId=@item.FlightID" class="flight_list_link">
+                            <div class="card text-white bg-info mb-3 flight_list_link" style="max-width: 18rem;">
+                                <div class="card-header"><h4>@item.From1 - @item.To1</h4> </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">Departure Date - @item.DepartureDate.ToString("dd/MM/yyyy")</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">FlightId - @item.FlightID</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">Time - @item.DepartureDate.ToShortTimeString()</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">Class - @item.ClassType</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">Available Seats - @item.AvailableSeats</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">Fare - BDT. @item.Fare.ToString()</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div><br />*/
+
+                    <div class="card w-100 mb-3">
+                        <h5 class="card-header">@item.From1 - @item.To1</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6 class="card-title"> Departure Time - @item.DepartureDate.ToShortTimeString()</h6>
+                                    <h6 class="card-title"> Date - @item.DepartureDate.ToString("dd/MM/yyyy")</h6>
+                                </div>
+                                <div class="col-3">
+                                    <h6 class="card-title">Flight Id - @item.FlightID</h6>
+                                    <h6 class="card-title">Class Type - @item.ClassType</h6>
+                                </div>
+                                <div class="col-3">
+                                    <h6 class="card-title">Available Seats - @item.AvailableSeats</h6>
+                                    <h6 class="card-title">Fare - BDT. @item.Fare.ToString()</h6>
+                                </div>
+                                <div class="col-2">
+                                    <a href="/CompanyUserLogs/Booking?flightId=@item.FlightID" class="btn btn-outline-dark">Flight Detailes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                }
+
+
+            }
+        </div>
+    }
+    else
+    {
+        <div>
+            <h1>No Available Flight At This Moment</h1>
+        </div>
+    }
+    ViewBag.flightList = null;
+}
+<style>
+    .card {
+        font-family: Arial;
+        background-color: #f4f1bb;
+        box-shadow: 1px 1px 1px 1px grey;
+    }
+
+        .card:hover {
+            transition: 400ms;
+            background-color: #dbf4a7;
+            box-shadow: 2px 2px 2px 2px grey;
+        }
+
+    .card-header {
+        font: bold;
+    }
+</style>
+

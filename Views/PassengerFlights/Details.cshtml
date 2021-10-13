@@ -1,0 +1,74 @@
+﻿@model EasyFly.Models.PassengerFlight
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PassengerFlight</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoOfSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoOfSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatNumbers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatNumbers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalHotelRent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalHotelRent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightInfo.AirCraftID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightInfo.AirCraftID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelInfo.HotelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelInfo.HotelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfferInfo.HotelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfferInfo.HotelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SingleUserLog.S_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SingleUserLog.S_Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

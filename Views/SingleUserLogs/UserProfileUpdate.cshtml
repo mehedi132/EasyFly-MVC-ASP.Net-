@@ -1,0 +1,89 @@
+﻿@model EasyFly.Models.SingleUserLog
+@{
+    ViewBag.Title = "UserProfileUpdate";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+
+    <link href="~/Content/userinfo.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div style="height:200px; background-color:aqua;">
+        <h1>Personal Information </h1>
+        <p style="color: white; font-size: 20px; word-spacing: 300px ">Name: Address: Email:</p>
+        @foreach (var f in ViewBag.d)
+        {
+            <p style="font-size: 20px; word-spacing: 300px ">@f.FirstName @f.S_ContactNo @f.S_Email</p>
+        }
+    </div>
+
+    <div>
+        <div style=" background-color:forestgreen;">
+            <h1> DashBoard  @Html.ActionLink("Old Dashboard", "Dashboard")</h1>
+        </div>
+
+        <div style="width:25%; height: 300px; background-color: antiquewhite; float: left; margin-left: 15px ">
+            <button class="button btn btn"><span>@Html.ActionLink("Update Password", "updatepassword")</span></button>
+            <button class="button"><span>@Html.ActionLink("Update User History", "recentPurchase")</span></button>
+            <button class="button"><span>@Html.ActionLink("Update User Profile", "UserProfileUpdate")</span></button>
+            <button class="button"><span>@Html.ActionLink("Ticket Cancellation", "ticketcancellation")</span></button>
+        </div>
+
+        <div style="width:70%; height: 400px; background-color: darkseagreen; float: left; margin-left: 15px ">
+
+            @using (Html.BeginForm("UserProfileUpdate", "SingleUserLogs", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.S_UserID)
+                @Html.HiddenFor(model => model.LastName)
+                @Html.HiddenFor(model => model.S_Passkey)
+                @Html.HiddenFor(model => model.S_ConfirmPasskey)
+                @Html.HiddenFor(model => model.DOB)
+                @Html.HiddenFor(model => model.S_Country)
+                @Html.HiddenFor(model => model.Gender)
+                @Html.HiddenFor(model => model.S_Photos)
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.S_ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.S_ContactNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.S_ContactNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.S_Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.S_Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.S_Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+
+
+            }
+        </div>
+
+
+
+    </div>
+
+
+</body>
+</html>
+

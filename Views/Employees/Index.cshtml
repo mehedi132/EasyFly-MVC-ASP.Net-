@@ -1,0 +1,177 @@
+﻿@model IEnumerable<EasyFly.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+
+    var TotalEmployee = ViewBag.TotalEmployee;
+    var TotalDutyEmployees = ViewBag.TotalDutyEmployees;
+    var TotalNextDutyEmployees = ViewBag.TotalNextDutyEmployees;
+    var TotalDutyFreeEmployees = ViewBag.TotalDutyFreeEmployees;
+}
+
+
+<!doctype html>
+<html lang="en">
+<body class="bg-gray-100">
+
+    <!-- General Report -->
+    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalEmployee</h1>
+                        <div class="h2 text-green-700 fad fa-user-tie"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Employees</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalDutyEmployees</h1>
+                        <div class="h2 text-indigo-700 fad fa-id-card-alt"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Duty Employees</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalNextDutyEmployees</h1>
+                        <div class="h2 text-red-700 fad fa-plane-departure"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Next Duty Employees</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalDutyFreeEmployees</h1>
+                        <div class="h2 text-yellow-700 fad fa-plane-arrival"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">To be assigned Employees</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+
+    </div>
+
+
+    <!-- Start Data Table -->
+    <div class="card col-span-2 xl:col-span-1">
+
+        <div class="card-header" style="font-weight:bold">Employee Data - <p>@Html.ActionLink("Add Employee", "Create")</p></div>
+
+        <table class="table-auto w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-r">
+                        Employees
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.EmployeeID)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.E_Email)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.E_Name)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.E_Age)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.E_ContactNo)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.E_Designation)
+                    </th>
+                    <th class="px-4 py-2 border-r"></th>
+                </tr>
+            </thead>
+
+            <tbody class="text-gray-600">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="border border-l-0 px-4 py-2">
+                            <!--Html.DisplayFor(modelItem => item.E_Photos)-->
+                            <img src="@Url.Content(item.E_Photos)" width="50" height="50" />
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.EmployeeID)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.E_Email)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.E_Name)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.E_Age)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.E_ContactNo)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.E_Designation)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

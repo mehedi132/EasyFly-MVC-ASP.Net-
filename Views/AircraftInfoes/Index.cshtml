@@ -1,0 +1,162 @@
+﻿@model IEnumerable<EasyFly.Models.AircraftInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+
+
+<!doctype html>
+<html lang="en">
+
+<body>
+
+    <!-- General Report -->
+    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@ViewBag.TotalAircraft</h1>
+                        <div class="h2 text-green-700 fad fa-plane"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Aircrafts</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@ViewBag.TotalPassengerAircraft</h1>
+                        <div class="h2 text-indigo-700 fad fa-users"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Passenger Aircrafts</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@ViewBag.TotalCargoAircraft</h1>
+                        <div class="h2 text-red-700 fad fa-luggage-cart"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Cargo Aircrafts</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@ViewBag.TotalAircraftsInOperation</h1>
+                        <div class="h2 text-yellow-700 fad fa-plane-departure"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Aircrafts in Operation</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+
+    </div>
+
+    <br />
+    <!-- Start Data Table -->
+    <div class="card col-span-2 xl:col-span-1">
+
+        <div class="card-header" style="font-weight:bold">Aircraft Data - <p>@Html.ActionLink("Add Aircraft", "Create")</p></div>
+
+        <table class="table-auto w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.AC_ID)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.AC_Name)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.AC_Type)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.PassengerCapacity)
+                    </th>
+                    <th class="px-4 py-2 border-r">
+                        @Html.DisplayNameFor(model => model.CargoCapacity)
+                    </th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+            <tbody class="text-gray-600">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.AC_ID)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.AC_Name)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.AC_Type)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.PassengerCapacity)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.DisplayFor(modelItem => item.CargoCapacity)
+                        </td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.AC_ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.AC_ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.AC_ID })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

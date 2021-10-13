@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "Booking";
+}
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       let str = "";
+        let color = "";
+        let flightFare = $('#farePerFlight').text();
+        let noOfSeats = 0;
+        let setColor = 'rgb(242, 84, 45)';
+        let clickedColor = 'rgb(191, 172, 181)';
+        $(".seatBtn").click(function () {
+            var colorD = $(this).css("background-color");
+            let txt = $(this).text();
+            if (colorD == setColor) {
+                noOfSeats += 1;
+                str += txt;
+                color = clickedColor;
+            } else if (colorD == clickedColor) {
+                noOfSeats -= 1;
+                color = setColor;
+                str = str.replace(txt, "");
+
+            } else {
+                return;
+            }
+
+            $('#selectedSeats').val(str);
+            $('#seatsInBooking').text(str)
+            $(this).css('background-color', color);
+            $('#empty_label').text("");
+            let faretxt = noOfSeats.toString() + " x BDT. " + flightFare;
+            let total = "BDT. " + (noOfSeats * parseInt(flightFare)).toString();
+            $('#flightFare').text(faretxt)
+            $('#totalFare').text(total);
+            $('#totalFareForDb').val(noOfSeats * parseInt(flightFare));
+            $('#noOfSeats').val(noOfSeats);
+
+
+        });
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                @{
+
+                    var item = ViewBag.flightDetails;
+
+                    <tr>
+                        <td>Departure From : </td>
+                        <td>@item[0].From1</td>
+                    </tr>
+                    <tr>
+                        <td>Departure To : </td>
+                        <td>@item[0].To1</td>
+                    </tr>
+                    <tr>
+                        <td>Class : </td>
+                        <td>@item[0].ClassType</td>
+                    </tr>
+                    <tr>
+                        <td>Departure Time : </td>
+                        <td>@item[0].DepartureDate.ToString("t")</td>
+                    </tr>
+                    <tr>
+                        <td>Date : </td>
+                        <td>@item[0].DepartureDate.ToString("D")</td>
+                    </tr>
+                    <tr>
+                        <td>Selected Spaces : </td>
+                        <td id="seatsInBooking"></td>
+                    </tr>
+                    <tr>
+                        <td>Fare : </td>
+                        <td id="flightFare">0 x BDT. @item[0].Fare</td>
+                    </tr>
+                    <tr style="font-weight:bold">
+                        <td>Total Fare: </td>
+                        <td id="totalFare">BDT. 0</td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+
+            <div class="row mb-4">
+                <div class="col-2"><button style="background-color:rgb(242, 84, 45);height:10px;width:20px"></button></div>
+                <div class="col-4"><h5>- Available</h5></div>
+                <div class="col-2"><button style="background-color: rgb(74, 78, 105); height: 10px; width: 20px"></button></div>
+                <div class="col-4"><h5>- Booked</h5></div>
+            </div>
+
+
+
+            <div class="row">
+                @{
+                    int cnt = 1;
+                    foreach (string x in ViewBag.seatList)
+                    {
+                        string color = "rgb(242, 84, 45)", bookedColor = "rgb(74, 78, 105)";
+                        string pColor = color;
+
+                        if (item[0].BookedSeats.Contains(x))
+                        {
+                            pColor = bookedColor;
+                        }
+                        if (cnt % 3 == 0)
+                        {
+                            <div class="col-2"></div>
+                        }
+                        <div class="col-2 pb-3 ">
+                            <button class="btn btn-info seatBtn" style="background-color:@pColor" id="@x">@x</button>
+                        </div>
+
+                        cnt++;
+                        if (cnt == 6)
+                        {
+                            cnt = 1;
+                        }
+                    }
+
+                }
+            </div>
+            <div class="row">
+                <label id="empty_label"></label>
+                <label hidden id="farePerFlight">@item[0].Fare</label>
+            </div>
+            <div class="row mt-4 justify-content-center">
+                @using (Html.BeginForm("Checkout", "CompanyUserLogs", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+
+                        <div>
+                            <input id="selectedSeats" hidden type="text" name="selectedSeats" required />
+                        </div>
+                        <div>
+                            <input id="noOfSeats" hidden type="text" name="noOfSeats" required />
+                        </div>
+                        <div>
+                            <input id="totalFareForDb" hidden type="text" name="totalFareForDb" required />
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="submit" class="btn btn-outline-primary" value="Proceed to Book" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&display=swap');
+
+    .table {
+        font-size: 18px;
+        font-weight: 400;
+        font-family: 'Comfortaa', cursive;
+    }
+</style>

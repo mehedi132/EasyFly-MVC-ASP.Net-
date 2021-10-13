@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "ProceedToBooking";
+}
+
+
+<div class="container justify-content-center">
+    <table class="table">
+        <tr>
+            <td>Name </td>
+            <td> @ViewBag.username </td>
+        </tr>
+        <tr>
+            <td>Email </td>
+            <td> @ViewBag.useremail </td>
+        </tr>
+        <tr>
+            <td>Flight ID </td>
+            <td> @ViewBag.flightId </td>
+        </tr>
+        <tr>
+            <td>Date </td>
+            <td> @ViewBag.flighDetails[0].DepartureDate.ToString("D") </td>
+        </tr>
+        <tr>
+            <td>Time </td>
+            <td> @ViewBag.flighDetails[0].DepartureDate.ToString("t") </td>
+        </tr>
+        <tr>
+            <td>Number of Seats </td>
+            <td> @ViewBag.noOfSeats </td>
+        </tr>
+        <tr>
+            <td>Selected Seats </td>
+            <td> @ViewBag.bookedSeats </td>
+        </tr>
+        <tr>
+            <td>Total Fare </td>
+            <td> @ViewBag.totalFlightFare </td>
+        </tr>
+    </table>
+    <h1>@ViewBag.msg</h1>
+    <h1>@Html.ActionLink("Back to home", "SearchForFlight")</h1>
+</div>
+

@@ -1,0 +1,78 @@
+﻿@model EasyFly.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+@Styles.Render("~/Content/css")
+<h2>Details of @Model.E_Name</h2>
+
+<hr />
+<div>
+    <br />
+    <div class="container">
+        <div class="main">
+            <div class="row">
+                <div class="col-md-4 mt-1">
+                    <div class="card text-center" style="background-color:#333; color:white; height:100%;">
+                        <div class="card-body">
+                            <img src="@Url.Content(Model.E_Photos)" class="rounded-circle" width="180" style="margin-left:45px;" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-1">
+                    <div class="card mb-3 " style="position:relative; height:100%; display:flex; flex-direction:column">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Employee ID</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.EmployeeID</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Employee Name</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.E_Name</div>
+                            </div>
+                            <hr />                            
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Age</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.E_Age</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Email</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.E_Email</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Contact No.</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.E_ContactNo</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Designation</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.E_Designation</div>
+                            </div>
+                            <hr />
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

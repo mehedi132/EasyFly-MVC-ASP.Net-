@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EasyFly.Models.BookedPackage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageInfo.HotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SingleUserLog.S_Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PackageInfo.HotelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SingleUserLog.S_Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,57 @@
+﻿@model EasyFly.Models.UserType
+
+@{
+    ViewBag.Title = "User Selection";
+}
+
+<h2>Select User Type</h2>
+<h5>@ViewBag.loginErrorMsg</h5>
+
+@using (Html.BeginForm("Login", "SingleUserLogs", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login as Single User" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Login", "CompanyUserLogs", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Login as Company User" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("AdminLogin", "AdminLogins", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Login as Admin" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

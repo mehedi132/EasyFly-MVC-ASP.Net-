@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EasyFly.Models.HotelInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+
+
+<!-- Start Data Table -->
+<div class="card col-span-2 xl:col-span-1">
+
+    <div class="card-header" style="font-weight:bold">Hotels Data - <p>@Html.ActionLink("Engage New Hotel", "Create")</p></div>
+
+
+    <table class="table-auto w-full text-left">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 border-r">Hotels</th>
+                <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.HotelID)</th>
+                <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.HotelName)</th>
+                <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.HotelMail)</th>
+                <th class="px-4 py-2 border-r"></th>
+            </tr>
+        </thead>
+
+        <tbody class="text-gray-600">
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="border border-l-0 px-4 py-2"><img src="@Url.Content(item.HotelPhotos)" width="50" height="50" /></td>
+                    <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.HotelID)</td>
+                    <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.HotelName)</td>
+                    <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.HotelMail)</td>
+                    <td class="border border-l-0 px-4 py-2">
+                        @Html.ActionLink("Details", "Details", new { id = item.HotelID }) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.HotelID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.HotelID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

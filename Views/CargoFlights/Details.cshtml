@@ -1,0 +1,35 @@
+﻿@model EasyFly.Models.CargoFlight
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CargoFlight</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyUserLog.C_Photos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyUserLog.C_Photos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightInfo.AirCraftID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightInfo.AirCraftID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,153 @@
+﻿@model EasyFly.Models.FlightInfo
+
+@{
+    ViewBag.Title = "Delete";
+}
+@Styles.Render("~/Content/css")
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FlightInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.From1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.From1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.To1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.To1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartureDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArrivalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookedSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookedSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AircraftInfo.AC_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AircraftInfo.AC_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.E_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.E_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee1.E_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee1.E_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee2.E_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee2.E_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee3.E_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee3.E_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee4.E_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee4.E_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee5.E_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee5.E_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee6.E_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee6.E_Email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

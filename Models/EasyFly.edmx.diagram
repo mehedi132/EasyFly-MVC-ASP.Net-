@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="62dad7f9402a4f86b49c3d3fbe45be92" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.AircraftInfo" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.CompanyUserLog" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.Employee" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.FlightInfo" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.HotelInfo" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.SingleUserLog" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.CustomerSupport" Width="1.5" PointX="8.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.Feedback" Width="1.5" PointX="8" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.Membership" Width="1.5" PointX="12.875" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.PassengerFlight" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__AirCr__42E1EEFE" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__CustomerS__C_Use__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__Assis__489AC854" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__Assis__498EEC8D" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__Cabin__45BE5BA9" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__Cabin__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__Cabin__47A6A41B" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__Pilot__43D61337" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__FlightInf__Pilot__44CA3770" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__Feedback__Flight__57DD0BE4" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__Passenger__Fligh__4B7734FF" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__Passenger__Hotel__4E53A1AA" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__CustomerS__S_Use__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__Feedback__S_User__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__Membershi__S_Use__3B40CD36" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__Passenger__S_Use__4C6B5938" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.CargoFlight" Width="1.5" PointX="5.25" PointY="6.625" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__CargoFlig__C_Use__625A9A57" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__CargoFlig__Fligh__6166761E" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.PackageInfo" Width="1.5" PointX="7.625" PointY="7.375" />
+        <EntityTypeShape EntityType="EasyFlycomDatabaseModel.BookedPackage" Width="1.5" PointX="11.875" PointY="4.75" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__BookedPac__Packa__7755B73D" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__BookedPac__S_Use__76619304" />
+        <AssociationConnector Association="EasyFlycomDatabaseModel.FK__Passenger__Packa__10216507" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,96 @@
+﻿@model EasyFly.Models.SingleUserLog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SingleUserLog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Photos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Photos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Passkey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Passkey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_ContactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_ContactNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Country)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

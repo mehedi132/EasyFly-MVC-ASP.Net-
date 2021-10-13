@@ -1,0 +1,68 @@
+﻿@model EasyFly.Models.PackageInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+<h2>Details</h2>
+
+<div>
+    <h4>PackageInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageSubDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageSubDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackagePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackagePrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PackageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

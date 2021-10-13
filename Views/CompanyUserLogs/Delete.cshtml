@@ -1,0 +1,80 @@
+﻿@model EasyFly.Models.CompanyUserLog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CompanyUserLog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Photos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Photos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Passkey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Passkey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEstd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEstd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_ContactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_ContactNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_CountryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_CountryName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "CancelBooking";
+}
+
+
+@{
+    if (ViewBag.bookedFlights.Count > 0)
+    {
+        <h2>Your Booked Flights</h2>
+        var from1 = ViewBag.depList;
+        var to1 = ViewBag.arrList;
+        var depTime = ViewBag.depTime;
+        var depDate = ViewBag.depDate;
+        var classType = ViewBag.classType;
+        int i = 0;
+
+        foreach (var item in ViewBag.bookedFlights)
+        {
+            <div class="card mt-3 mb-2">
+                <h5 class="card-header">@from1[i] - @to1[i]</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6 class="card-title"> Departure Time - @depTime[i]</h6>
+                            <h6 class="card-title"> Date - @depDate[i]</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="card-title">Flight Id - @item.FlightID</h6>
+                            <h6 class="card-title">Class Type - @classType[i]</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="card-title">Seat Booked - @item.SeatNumbers</h6>
+                            <h6 class="card-title">Total Fare - BDT. @item.TotalFlightFare</h6>
+                        </div>
+                        <div class="col-2">
+                            <a href="/SingleUserLogs/ConfirmDelete?flightID=@item.FlightID&bookedSeats=@item.SeatNumbers" class="btn btn-outline-dark">Cancel This Flight</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            i++;
+        }
+
+    }
+    else
+    {
+        <h2>Currently you don't have any booked flight </h2>
+    }
+}
+
+
+
+<style>
+    .card {
+        background-color: #f4f1bb;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px grey;
+    }
+
+        .card:hover {
+            transition: 500ms;
+            background-color: #cadbc8;
+            box-shadow: 2px 2px 2px 2px grey;
+        }
+</style>

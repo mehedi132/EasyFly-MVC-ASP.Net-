@@ -1,0 +1,140 @@
+﻿@model EasyFly.Models.SingleUserLog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    var bookedFlightInfo = ViewBag.bookedFlightInfo;
+}
+
+<h2>Details</h2><hr />
+<div>
+    @Styles.Render("~/Content/css")
+    
+    <br />
+    <div class="container">
+        <div class="main">
+            <div class="row">
+                <div class="col-md-4 mt-1">
+                    <div class="card text-center" style="background-color:#333; color:white; height:100%;">
+                        <div class="card-body">
+                            <img src="@Url.Content(Model.S_Photos)" class="rounded-circle" width="180" style="margin-left:45px;"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-1">
+                    <div class="card mb-3 " style="position:relative; height:100%; display:flex; flex-direction:column">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>User ID</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_UserID</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>First Name</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.FirstName</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Last Name</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.LastName</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Date of Birth</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.DOB</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Gender</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.Gender</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Email</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_Email</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Contact No.</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_ContactNo</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Country</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_Country</div>
+                            </div>
+                            <hr />
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+@{
+    if (ViewBag.bookedFlights.Count > 0)
+    {
+        <h2>Flight history of this user</h2>
+
+        int i = 0;
+
+        foreach (var item in ViewBag.bookedFlights)
+        {
+            <div class="card mt-1">
+                <h5 class="card-header" style="font-weight:bold">@bookedFlightInfo[i].From1 - @bookedFlightInfo[i].To1</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="card-title" style="font-weight:bold">Departure Date - <span style="color:indigo">@bookedFlightInfo[i].DepartureDate.ToString("D")</span></h6>
+                            <h6 class="card-title" style="font-weight:bold">Time - <span style="color:indigo">@bookedFlightInfo[i].DepartureDate.ToString("t")</span></h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="card-title" style="font-weight:bold">Flight ID - <span style="color:indigo">@item.FlightID</span></h6>
+                            <h6 class="card-title" style="font-weight:bold">Class Type - <span style="color:indigo">@bookedFlightInfo[i].ClassType</span></h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="card-title" style="font-weight:bold">Seat Booked - <span style="color:indigo">@item.SeatNumbers</span></h6>
+                            <h6 class="card-title" style="font-weight:bold">Total Fare - BDT. <span style="color:indigo">@item.TotalFlightFare</span></h6>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            i++;
+        }
+
+    }
+    else
+    {
+        <h2>This user did not book any flight yet.</h2>
+    }
+}
+
+
+
+<style>
+    .card {
+        box-shadow: 1px 1px 1px 1px grey;
+    }
+</style>
+
+<p>
+    <br />
+    @Html.ActionLink("Back to List", "Index")
+</p>

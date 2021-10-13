@@ -1,0 +1,74 @@
+﻿@model EasyFly.Models.AircraftInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+<h2>Details</h2>
+
+<hr />
+<div>
+    <br />
+    <div class="container">
+        <div class="main">
+            <div class="row">
+
+                <div class="col-md-4 mt-1">
+                    <div class="card text-center" style="background-color:#ff4242; color:white; height:100%;">
+                        <div class="card-body">
+                            <img src="~/Photos/Logo/R1.png"  style="margin-left:55px; margin-top:20px" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-1">
+                    <div class="card mb-3 " style="position:relative; height:100%; display:flex; flex-direction:column">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Aircraft ID</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.AC_ID</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Aircraft Model</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.AC_Name</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Aircraft Type</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.AC_Type</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Passenger Capacity</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.PassengerCapacity</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Cargo Capacity</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.CargoCapacity</div>
+                            </div>
+                            <hr />
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

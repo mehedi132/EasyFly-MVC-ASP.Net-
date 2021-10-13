@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyFly</title>
+    <link rel="shortcut icon" href="~/Photos/Logo/R1.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="/Home/Index">EasyFly</a>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/About">About</a>
+                    </li>
+
+                    @{ if (Session["User_Email"] == "")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/UserTypes/Login">Login</a>
+                            </li>
+                        }
+                        else if (Session["User_Email"] != "")
+                        {
+                            if (Session["User_Type"] == "SingleUser")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/SingleUserLogs/Dashboard">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/SingleUserLogs/Chat">Customer Support</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/CompanyUserLogs/Dashboard">Dashboard</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link" href="/UserTypes/Login">Log Out</a>
+                            </li>
+                        }
+                    }
+
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        <br />
+        @RenderBody()
+        <hr />
+        <br />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - EasyFly - All Rights Resereved.</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="~/Scripts/EasyFlyScript.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

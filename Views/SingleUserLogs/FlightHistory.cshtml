@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "FlightHistory";
+    var bookedFlightInfo = ViewBag.bookedFlightInfo;
+}
+
+@{
+    if (ViewBag.bookedFlights.Count > 0)
+    {
+        <h2>Your Previous Flights</h2>
+
+        int i = 0;
+
+        foreach (var item in ViewBag.bookedFlights)
+        {
+            <div class="card mt-1">
+                <h5 class="card-header">@bookedFlightInfo[i].From1 - @bookedFlightInfo[i].To1</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="card-title"> Departure Time - @bookedFlightInfo[i].DepartureDate.ToString("D")</h6>
+                            <h6 class="card-title"> Date -@bookedFlightInfo[i].DepartureDate.ToString("t")</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="card-title">Flight Id - @item.FlightID</h6>
+                            <h6 class="card-title">Class Type - @bookedFlightInfo[i].ClassType</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="card-title">Seat Booked - @item.SeatNumbers</h6>
+                            <h6 class="card-title">Total Fare - BDT. @item.TotalFlightFare</h6>
+                        </div>
+
+                    </div>
+
+                    <button class="btn btt"> @Html.ActionLink("Give Feedback", "Output", "Feedbacks") </button>
+                </div>
+            </div>
+            i++;
+        }
+
+    }
+    else
+    {
+        <h2>Currently haven't booked any booked flight yet </h2>
+    }
+}
+
+
+
+<style>
+    .card {
+        box-shadow: 1px 1px 1px 1px grey;
+    }
+</style>
+

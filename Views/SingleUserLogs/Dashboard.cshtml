@@ -1,0 +1,93 @@
+﻿@model EasyFly.Models.SingleUserLog
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <br />
+    <div class="container">
+        <div class="main">
+            <div class="row">
+                <div class="col-md-4 mt-1">
+                    <div class="card text-center" style="background-color:darkgrey; position:relative; display:flex; flex-direction:column color:white; height:100%;">
+                        <div class="card-body">
+                            <img src="@Url.Content(Model.S_Photos)" class="rounded-circle" width="180" style="" />
+                            
+                            <div class="mt-3" style="margin-left:10px; display:block; color:white; padding-bottom:10px; font-size:30px; text-decoration:none">
+
+                                <h3 style="padding-bottom:10px; color:darkblue">@Model.FirstName</h3>
+
+                                <p class="button btn-btn"> @Html.ActionLink("Book a Flight", "SearchForFlight", new { id = Model.S_UserID }) </p>
+
+                                <p class="button btn-btn"> @Html.ActionLink("Cancel Flight", "CancelBooking", new { id = Model.S_UserID }) </p>
+
+                                <p class="button btn-btn"> @Html.ActionLink("See Flight History", "FlightHistory", new { id = Model.S_UserID }) </p>
+
+                                <p> @Html.ActionLink("Edit Profile", "Edit", new { id = Model.S_UserID }) </p>
+
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-1">
+                    <div class="card mb-3 " style="position:relative; height:100%; display:flex; flex-direction:column">
+                        <div class="card-body">
+
+                            <div class="row" style="padding-top:15px">
+                                <div class="col-md-3"><h5>User ID</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_UserID</div>
+                            </div>
+                            <hr />
+
+                            
+
+                            <div class="row" style="padding-top:20px">
+                                <div class="col-md-3"><h5>Date of Birth</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.DOB</div>
+                            </div>
+                            <hr />
+
+                            <div class="row" style="padding-top:20px">
+                                <div class="col-md-3"><h5>Gender</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.Gender</div>
+                            </div>
+                            <hr />
+
+                            <div class="row" style="padding-top:20px">
+                                <div class="col-md-3"><h5>Email</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_Email</div>
+                            </div>
+                            <hr />
+
+                            <div class="row" style="padding-top:20px">
+                                <div class="col-md-3"><h5>Contact No.</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_ContactNo</div>
+                            </div>
+                            <hr />
+
+                            <div class="row" style="padding-top:20px">
+                                <div class="col-md-3"><h5>Country</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.S_Country</div>
+                            </div>
+                            <hr />
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+</body>
+</html>

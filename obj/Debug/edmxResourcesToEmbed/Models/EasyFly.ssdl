@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EasyFlycomDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AircraftInfo">
+    <Key>
+      <PropertyRef Name="AC_ID" />
+    </Key>
+    <Property Name="AC_ID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="AC_Name" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="PassengerCapacity" Type="int" />
+    <Property Name="CargoCapacity" Type="int" />
+    <Property Name="AC_Type" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EasyFlycomDatabase.dbo.BookedPackages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BookedPackages">
+    <Key>
+      <PropertyRef Name="S_UserID" />
+      <PropertyRef Name="PackageID" />
+      <PropertyRef Name="CheckInDate" />
+      <PropertyRef Name="NoOfPerson" />
+    </Key>
+    <Property Name="S_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="PackageID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CheckInDate" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="NoOfPerson" Type="int" Nullable="false" />
+    <Property Name="TotalPrice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EasyFlycomDatabase.dbo.CargoFlight' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CargoFlight">
+    <Key>
+      <PropertyRef Name="FlightID" />
+      <PropertyRef Name="C_UserID" />
+      <PropertyRef Name="TotalCargoFare" />
+      <PropertyRef Name="ProductType" />
+      <PropertyRef Name="ProductDimension" />
+      <PropertyRef Name="ProductWeight" />
+      <PropertyRef Name="ProductUnit" />
+    </Key>
+    <Property Name="FlightID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ProductType" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ProductDimension" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ProductWeight" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ProductUnit" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="TotalCargoFare" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyUserLog">
+    <Key>
+      <PropertyRef Name="C_UserID" />
+    </Key>
+    <Property Name="C_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_Photos" Type="varchar" MaxLength="500" />
+    <Property Name="C_Email" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_Name" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_Passkey" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="DateEstd" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_ContactNo" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_CountryName" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EasyFlycomDatabase.dbo.CustomerSupport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CustomerSupport">
+    <Key>
+      <PropertyRef Name="S_UserID" />
+      <PropertyRef Name="C_UserID" />
+    </Key>
+    <Property Name="S_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="C_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="UserAdminConvo" Type="varchar" MaxLength="8000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="E_Email" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="E_Photos" Type="varchar" MaxLength="500" />
+    <Property Name="E_Name" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="E_Age" Type="int" Nullable="false" />
+    <Property Name="E_ContactNo" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="E_Designation" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="DutyStatus" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EasyFlycomDatabase.dbo.Feedback' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="FlightID" />
+      <PropertyRef Name="S_UserID" />
+      <PropertyRef Name="FlightRating" />
+    </Key>
+    <Property Name="FlightID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="S_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="FlightRating" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Feedback1" Type="varchar" MaxLength="5000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlightInfo">
+    <Key>
+      <PropertyRef Name="FlightID" />
+    </Key>
+    <Property Name="FlightID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="AirCraftID" Type="varchar" MaxLength="500" />
+    <Property Name="From1" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="To1" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="DepartureDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="ArrivalDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="ClassType" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Pilot1" Type="varchar" MaxLength="500" />
+    <Property Name="Pilot2" Type="varchar" MaxLength="500" />
+    <Property Name="CabinCrew1" Type="varchar" MaxLength="500" />
+    <Property Name="CabinCrew2" Type="varchar" MaxLength="500" />
+    <Property Name="CabinCrew3" Type="varchar" MaxLength="500" />
+    <Property Name="Assistant1" Type="varchar" MaxLength="500" />
+    <Property Name="Assistant2" Type="varchar" MaxLength="500" />
+    <Property Name="Fare" Type="int" Nullable="false" />
+    <Property Name="AvailableSeats" Type="int" />
+    <Property Name="BookedSeats" Type="varchar" MaxLength="500" />
+    <Property Name="FlightType" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="HotelInfo">
+    <Key>
+      <PropertyRef Name="HotelID" />
+    </Key>
+    <Property Name="HotelID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="HotelName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="HotelAddress" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="HotelMail" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="BusinessCapacity" Type="int" />
+    <Property Name="EconomyCapacity" Type="int" />
+    <Property Name="HotelPhotos" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="EcoRent" Type="int" Nullable="false" />
+    <Property Name="BusiRent" Type="int" Nullable="false" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EasyFlycomDatabase.dbo.Membership' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Membership">
+    <Key>
+      <PropertyRef Name="S_UserID" />
+      <PropertyRef Name="MemberStatus" />
+    </Key>
+    <Property Name="S_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="MemberStatus" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Point" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PackageInfo">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="HotelName" Type="varchar" MaxLength="500" />
+    <Property Name="HotelImage" Type="varchar" MaxLength="1000" />
+    <Property Name="Destination" Type="varchar" MaxLength="500" />
+    <Property Name="PackageSubDesc" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="PackageDesc" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="PackagePrice" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EasyFlycomDatabase.dbo.PassengerFlight' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PassengerFlight">
+    <Key>
+      <PropertyRef Name="TotalFlightFare" />
+    </Key>
+    <Property Name="FlightID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="S_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="PackageID" Type="varchar" MaxLength="500" />
+    <Property Name="NoOfSeats" Type="int" />
+    <Property Name="SeatNumbers" Type="varchar" MaxLength="500" />
+    <Property Name="HotelID" Type="varchar" MaxLength="500" />
+    <Property Name="TotalHotelRent" Type="int" />
+    <Property Name="TotalFlightFare" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SingleUserLog">
+    <Key>
+      <PropertyRef Name="S_UserID" />
+    </Key>
+    <Property Name="S_UserID" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="S_Email" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="S_Photos" Type="varchar" MaxLength="500" />
+    <Property Name="FirstName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="S_Passkey" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="DOB" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="S_ContactNo" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="S_Country" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__BookedPac__Packa__7755B73D">
+    <End Role="PackageInfo" Type="Self.PackageInfo" Multiplicity="1" />
+    <End Role="BookedPackages" Type="Self.BookedPackages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackageInfo">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="BookedPackages">
+        <PropertyRef Name="PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BookedPac__S_Use__76619304">
+    <End Role="SingleUserLog" Type="Self.SingleUserLog" Multiplicity="1" />
+    <End Role="BookedPackages" Type="Self.BookedPackages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SingleUserLog">
+        <PropertyRef Name="S_UserID" />
+      </Principal>
+      <Dependent Role="BookedPackages">
+        <PropertyRef Name="S_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CargoFlig__C_Use__13F1F5EB">
+    <End Role="CompanyUserLog" Type="Self.CompanyUserLog" Multiplicity="1" />
+    <End Role="CargoFlight" Type="Self.CargoFlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyUserLog">
+        <PropertyRef Name="C_UserID" />
+      </Principal>
+      <Dependent Role="CargoFlight">
+        <PropertyRef Name="C_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CargoFlig__Fligh__12FDD1B2">
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="1" />
+    <End Role="CargoFlight" Type="Self.CargoFlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlightInfo">
+        <PropertyRef Name="FlightID" />
+      </Principal>
+      <Dependent Role="CargoFlight">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustomerS__C_Use__367C1819">
+    <End Role="CompanyUserLog" Type="Self.CompanyUserLog" Multiplicity="1" />
+    <End Role="CustomerSupport" Type="Self.CustomerSupport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyUserLog">
+        <PropertyRef Name="C_UserID" />
+      </Principal>
+      <Dependent Role="CustomerSupport">
+        <PropertyRef Name="C_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustomerS__S_Use__3587F3E0">
+    <End Role="SingleUserLog" Type="Self.SingleUserLog" Multiplicity="1" />
+    <End Role="CustomerSupport" Type="Self.CustomerSupport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SingleUserLog">
+        <PropertyRef Name="S_UserID" />
+      </Principal>
+      <Dependent Role="CustomerSupport">
+        <PropertyRef Name="S_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback__Flight__078C1F06">
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlightInfo">
+        <PropertyRef Name="FlightID" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback__S_User__0880433F">
+    <End Role="SingleUserLog" Type="Self.SingleUserLog" Multiplicity="1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SingleUserLog">
+        <PropertyRef Name="S_UserID" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="S_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__AirCr__42E1EEFE">
+    <End Role="AircraftInfo" Type="Self.AircraftInfo" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AircraftInfo">
+        <PropertyRef Name="AC_ID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="AirCraftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__Assis__489AC854">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="Assistant1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__Assis__498EEC8D">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="Assistant2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__Cabin__45BE5BA9">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="CabinCrew1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__Cabin__46B27FE2">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="CabinCrew2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__Cabin__47A6A41B">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="CabinCrew3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__Pilot__43D61337">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="Pilot1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FlightInf__Pilot__44CA3770">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="FlightInfo">
+        <PropertyRef Name="Pilot2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Membershi__S_Use__3B40CD36">
+    <End Role="SingleUserLog" Type="Self.SingleUserLog" Multiplicity="1" />
+    <End Role="Membership" Type="Self.Membership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SingleUserLog">
+        <PropertyRef Name="S_UserID" />
+      </Principal>
+      <Dependent Role="Membership">
+        <PropertyRef Name="S_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Passenger__Fligh__0E391C95">
+    <End Role="FlightInfo" Type="Self.FlightInfo" Multiplicity="1" />
+    <End Role="PassengerFlight" Type="Self.PassengerFlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlightInfo">
+        <PropertyRef Name="FlightID" />
+      </Principal>
+      <Dependent Role="PassengerFlight">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Passenger__Hotel__11158940">
+    <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+    <End Role="PassengerFlight" Type="Self.PassengerFlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelInfo">
+        <PropertyRef Name="HotelID" />
+      </Principal>
+      <Dependent Role="PassengerFlight">
+        <PropertyRef Name="HotelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Passenger__Packa__10216507">
+    <End Role="PackageInfo" Type="Self.PackageInfo" Multiplicity="0..1" />
+    <End Role="PassengerFlight" Type="Self.PassengerFlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackageInfo">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="PassengerFlight">
+        <PropertyRef Name="PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Passenger__S_Use__0F2D40CE">
+    <End Role="SingleUserLog" Type="Self.SingleUserLog" Multiplicity="1" />
+    <End Role="PassengerFlight" Type="Self.PassengerFlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SingleUserLog">
+        <PropertyRef Name="S_UserID" />
+      </Principal>
+      <Dependent Role="PassengerFlight">
+        <PropertyRef Name="S_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EasyFlycomDatabaseModelStoreContainer">
+    <EntitySet Name="AircraftInfo" EntityType="Self.AircraftInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyUserLog" EntityType="Self.CompanyUserLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FlightInfo" EntityType="Self.FlightInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HotelInfo" EntityType="Self.HotelInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PackageInfo" EntityType="Self.PackageInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SingleUserLog" EntityType="Self.SingleUserLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookedPackages" EntityType="Self.BookedPackages" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BookedPackages].[S_UserID] AS [S_UserID], 
+    [BookedPackages].[PackageID] AS [PackageID], 
+    [BookedPackages].[CheckInDate] AS [CheckInDate], 
+    [BookedPackages].[NoOfPerson] AS [NoOfPerson], 
+    [BookedPackages].[TotalPrice] AS [TotalPrice]
+    FROM [dbo].[BookedPackages] AS [BookedPackages]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CargoFlight" EntityType="Self.CargoFlight" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CargoFlight].[FlightID] AS [FlightID], 
+    [CargoFlight].[C_UserID] AS [C_UserID], 
+    [CargoFlight].[ProductType] AS [ProductType], 
+    [CargoFlight].[ProductDimension] AS [ProductDimension], 
+    [CargoFlight].[ProductWeight] AS [ProductWeight], 
+    [CargoFlight].[ProductUnit] AS [ProductUnit], 
+    [CargoFlight].[TotalCargoFare] AS [TotalCargoFare]
+    FROM [dbo].[CargoFlight] AS [CargoFlight]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CustomerSupport" EntityType="Self.CustomerSupport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CustomerSupport].[S_UserID] AS [S_UserID], 
+    [CustomerSupport].[C_UserID] AS [C_UserID], 
+    [CustomerSupport].[UserAdminConvo] AS [UserAdminConvo]
+    FROM [dbo].[CustomerSupport] AS [CustomerSupport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Feedback].[FlightID] AS [FlightID], 
+    [Feedback].[S_UserID] AS [S_UserID], 
+    [Feedback].[FlightRating] AS [FlightRating], 
+    [Feedback].[Feedback1] AS [Feedback1]
+    FROM [dbo].[Feedback] AS [Feedback]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Membership" EntityType="Self.Membership" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Membership].[S_UserID] AS [S_UserID], 
+    [Membership].[MemberStatus] AS [MemberStatus], 
+    [Membership].[Point] AS [Point]
+    FROM [dbo].[Membership] AS [Membership]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PassengerFlight" EntityType="Self.PassengerFlight" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PassengerFlight].[FlightID] AS [FlightID], 
+    [PassengerFlight].[S_UserID] AS [S_UserID], 
+    [PassengerFlight].[PackageID] AS [PackageID], 
+    [PassengerFlight].[NoOfSeats] AS [NoOfSeats], 
+    [PassengerFlight].[SeatNumbers] AS [SeatNumbers], 
+    [PassengerFlight].[HotelID] AS [HotelID], 
+    [PassengerFlight].[TotalHotelRent] AS [TotalHotelRent], 
+    [PassengerFlight].[TotalFlightFare] AS [TotalFlightFare]
+    FROM [dbo].[PassengerFlight] AS [PassengerFlight]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__BookedPac__Packa__7755B73D" Association="Self.FK__BookedPac__Packa__7755B73D">
+      <End Role="PackageInfo" EntitySet="PackageInfo" />
+      <End Role="BookedPackages" EntitySet="BookedPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BookedPac__S_Use__76619304" Association="Self.FK__BookedPac__S_Use__76619304">
+      <End Role="SingleUserLog" EntitySet="SingleUserLog" />
+      <End Role="BookedPackages" EntitySet="BookedPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CargoFlig__C_Use__13F1F5EB" Association="Self.FK__CargoFlig__C_Use__13F1F5EB">
+      <End Role="CompanyUserLog" EntitySet="CompanyUserLog" />
+      <End Role="CargoFlight" EntitySet="CargoFlight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CargoFlig__Fligh__12FDD1B2" Association="Self.FK__CargoFlig__Fligh__12FDD1B2">
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+      <End Role="CargoFlight" EntitySet="CargoFlight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CustomerS__C_Use__367C1819" Association="Self.FK__CustomerS__C_Use__367C1819">
+      <End Role="CompanyUserLog" EntitySet="CompanyUserLog" />
+      <End Role="CustomerSupport" EntitySet="CustomerSupport" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CustomerS__S_Use__3587F3E0" Association="Self.FK__CustomerS__S_Use__3587F3E0">
+      <End Role="SingleUserLog" EntitySet="SingleUserLog" />
+      <End Role="CustomerSupport" EntitySet="CustomerSupport" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback__Flight__078C1F06" Association="Self.FK__Feedback__Flight__078C1F06">
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback__S_User__0880433F" Association="Self.FK__Feedback__S_User__0880433F">
+      <End Role="SingleUserLog" EntitySet="SingleUserLog" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__AirCr__42E1EEFE" Association="Self.FK__FlightInf__AirCr__42E1EEFE">
+      <End Role="AircraftInfo" EntitySet="AircraftInfo" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__Assis__489AC854" Association="Self.FK__FlightInf__Assis__489AC854">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__Assis__498EEC8D" Association="Self.FK__FlightInf__Assis__498EEC8D">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__Cabin__45BE5BA9" Association="Self.FK__FlightInf__Cabin__45BE5BA9">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__Cabin__46B27FE2" Association="Self.FK__FlightInf__Cabin__46B27FE2">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__Cabin__47A6A41B" Association="Self.FK__FlightInf__Cabin__47A6A41B">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__Pilot__43D61337" Association="Self.FK__FlightInf__Pilot__43D61337">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FlightInf__Pilot__44CA3770" Association="Self.FK__FlightInf__Pilot__44CA3770">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Membershi__S_Use__3B40CD36" Association="Self.FK__Membershi__S_Use__3B40CD36">
+      <End Role="SingleUserLog" EntitySet="SingleUserLog" />
+      <End Role="Membership" EntitySet="Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Passenger__Fligh__0E391C95" Association="Self.FK__Passenger__Fligh__0E391C95">
+      <End Role="FlightInfo" EntitySet="FlightInfo" />
+      <End Role="PassengerFlight" EntitySet="PassengerFlight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Passenger__Hotel__11158940" Association="Self.FK__Passenger__Hotel__11158940">
+      <End Role="HotelInfo" EntitySet="HotelInfo" />
+      <End Role="PassengerFlight" EntitySet="PassengerFlight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Passenger__Packa__10216507" Association="Self.FK__Passenger__Packa__10216507">
+      <End Role="PackageInfo" EntitySet="PackageInfo" />
+      <End Role="PassengerFlight" EntitySet="PassengerFlight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Passenger__S_Use__0F2D40CE" Association="Self.FK__Passenger__S_Use__0F2D40CE">
+      <End Role="SingleUserLog" EntitySet="SingleUserLog" />
+      <End Role="PassengerFlight" EntitySet="PassengerFlight" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

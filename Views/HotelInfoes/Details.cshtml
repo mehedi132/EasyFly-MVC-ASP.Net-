@@ -1,0 +1,96 @@
+﻿@model EasyFly.Models.HotelInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<h2>Details</h2><hr />
+
+<div>   
+     @Styles.Render("~/Content/css")
+    
+    <br />
+    <div class="container">
+        <div class="main">
+            <div class="row">
+                <div class="col-md-4 mt-1">
+                    <div class="card text-center" style="background-color:#333; color:white; height:100%;">
+                        <div class="card-body">
+                            <img src="@Url.Content(Model.HotelPhotos)" class="rounded-circle" width="180" style="margin-left:45px;"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 mt-1">
+                    <div class="card mb-3 " style="position:relative; height:100%; display:flex; flex-direction:column">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Hotel ID</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.HotelID</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Hotel Name</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.HotelName</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Hotel Address</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.HotelAddress</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Hotel Email</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.HotelMail</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Business Rooms</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.BusinessCapacity</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Business Room Rent</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.BusiRent</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Economy Rooms</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.EconomyCapacity</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Economy Room Rent</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.EcoRent</div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-3"><h5>Contact No.</h5></div>
+                                <div class="col-md-9 text-purple-800 text-xl" style="font-weight:bold;">@Model.ContactNo</div>
+                            </div>
+                            <hr />
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<p>
+    <br />
+    @Html.ActionLink("Back to List", "Index")
+</p>

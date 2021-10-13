@@ -1,0 +1,255 @@
+﻿@model EasyFly.Models.FlightInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+@Styles.Render("~/Content/css")
+<h1>Details</h1>
+
+<div>
+    <h4>FlightInfo</h4>
+    <hr />
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        let str = "";
+        let color = "";
+        let flightFare = $('#farePerFlight').text();
+        let noOfSeats = 0;
+        let setColor = 'rgb(242, 84, 45)';
+        let clickedColor = 'rgb(191, 172, 181)';
+        $(".seatBtn").click(function () {
+            var colorD = $(this).css("background-color");
+            let txt = $(this).text();
+            if (colorD == setColor) {
+                noOfSeats += 1;
+                str += txt;
+                color = clickedColor;
+            } else if (colorD == clickedColor) {
+                noOfSeats -= 1;
+                color = setColor;
+                str = str.replace(txt, "");
+
+            } else {
+                return;
+            }
+
+            $('#selectedSeats').val(str);
+            $('#seatsInBooking').text(str)
+            $(this).css('background-color', color);
+            $('#empty_label').text("");
+            let faretxt = noOfSeats.toString() + " x BDT. " + flightFare;
+            let total = "BDT. " + (noOfSeats * parseInt(flightFare)).toString();
+            $('#flightFare').text(faretxt)
+            $('#totalFare').text(total);
+            $('#totalFareForDb').val(noOfSeats * parseInt(flightFare));
+            $('#noOfSeats').val(noOfSeats);
+
+
+        });
+    });
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                @{
+
+                    var item = ViewBag.flightDetails;
+
+                    <tr>
+                        <td>Departure City: </td>
+                        <td> @Html.DisplayFor(model => model.From1)</td>
+                    </tr>
+                    <tr>
+                        <td>Destination City: </td>
+                        <td>@Html.DisplayFor(model => model.To1)</td>
+                    </tr>
+                    <tr>
+                        <td>Flight Class: </td>
+                        <td>@Html.DisplayFor(model => model.ClassType)</td>
+                    </tr>
+                    <tr>
+                        <td>Departure Time: </td>
+                        <td>@item[0].DepartureDate.ToString("t")</td>
+                    </tr>
+                    <tr>
+                        <td>Date: </td>
+                        <td>@item[0].DepartureDate.ToString("D")</td>
+                    </tr>
+                    <tr>
+                        <td>Arrival Time: </td>
+                        <td>@item[0].ArrivalDate.ToString("t")</td>
+                    </tr>
+                    <tr>
+                        <td>Date: </td>
+                        <td>@item[0].ArrivalDate.ToString("D")</td>
+                    </tr>
+                    <tr>
+                        <td>Flight Type: </td>
+                        <td>@Html.DisplayFor(model => model.FlightType)</td>
+                    </tr>
+                    <tr>
+                        <td>Aircraft: </td>
+                        <td> @Html.DisplayFor(model => model.AircraftInfo.AC_Name)</td>
+                    </tr>
+                    <tr>
+                        <td>First Pilot: </td>
+                        <td> @Html.DisplayFor(model => model.Employee5.E_Name) ;  @Html.DisplayFor(model => model.Employee6.E_Name)</td>
+                    </tr>
+                    <tr>
+                        <td>Cabin Crews: </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Employee3.E_Name)
+                        ; @Html.DisplayFor(model => model.Employee4.E_Name)
+                        ; @Html.DisplayFor(model => model.Employee2.E_Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Assistants: </td>
+                    <td>@Html.DisplayFor(model => model.Employee.E_Name) ; @Html.DisplayFor(model => model.Employee1.E_Name)</td>
+                </tr>
+                <tr>
+                    <td>Fare: </td>
+                    <td id="flightFare">BDT. @Html.DisplayFor(model => model.Fare)</td>
+                </tr>
+
+
+                }
+            </table>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+
+            <div class="row mb-4">
+                <div class="col-2"><button style="background-color:rgb(242, 84, 45);height:10px;width:20px"></button></div>
+                <div class="col-4"><h5>- Available</h5></div>
+                <div class="col-2"><button style="background-color: rgb(74, 78, 105); height: 10px; width: 20px"></button></div>
+                <div class="col-4"><h5>- Booked</h5></div>
+            </div>
+
+
+
+            <div class="row">
+                @{
+                    int cnt = 1;
+                    foreach (string x in ViewBag.seatList)
+                    {
+                        string color = "rgb(242, 84, 45)", bookedColor = "rgb(74, 78, 105)";
+                        string pColor = color;
+
+                        if (item[0].BookedSeats.Contains(x))
+                        {
+                            pColor = bookedColor;
+                        }
+                        if (cnt % 3 == 0)
+                        {
+                            <div class="col-2"></div>
+                        }
+                        <div class="col-2 pb-3 ">
+                            <button class="btn btn-info seatBtn" style="background-color:@pColor" id="@x">@x</button>
+                        </div>
+
+                        cnt++;
+                        if (cnt == 6)
+                        {
+                            cnt = 1;
+                        }
+                    }
+
+                }
+            </div>
+            <div class="row">
+                <label id="empty_label"></label>
+                <label hidden id="farePerFlight">@Html.DisplayFor(model => model.Fare)</label>
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+
+
+        <!-- Start Data Table -->
+    @{ 
+        if(Model.FlightType == "Passenger")
+        {        
+            <div class="card col-span-2 xl:col-span-1">
+
+                <div class="card-header" style="font-weight:bold">Feedbacks from this flight -</div>
+
+                <table class="table-auto w-full text-left">
+                    <thead>
+                            <tr>
+                                <th class="px-4 py-2 border-r">
+                                    Passenger ID
+                                </th>
+                                <th class="px-4 py-2 border-r">
+                                    Passenger Name
+                                </th>
+                                <th class="px-4 py-2 border-r">
+                                    Feedback
+                                </th>
+                                <th class="px-4 py-2 border-r">
+                                    Flight Rating
+                                </th>
+
+                            </tr>
+                    </thead>
+
+                    <tbody class="text-gray-600">
+
+                        @foreach (var item1 in ViewBag.flightFeedbacks)
+                        {
+                            <tr>
+                                <td class="px-4 py-2">
+                                    @item1.S_UserID
+                                </td>
+
+                                @foreach (var item2 in ViewBag.PassengerDetails)
+                                {
+                                    if(item2.S_UserID == item1.S_UserID)
+                                    {
+                                        <td class="px-4 py-2">
+                                            @item2.FirstName @item2.LastName
+                                        </td>
+                                        break;
+                                    }
+                                }
+
+                                <td class="px-4 py-2">
+                                    @item1.Feedback1
+                                </td> 
+                                
+                                <td class="px-4 py-2">
+                                    @item1.FlightRating
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            
+            </div>
+        }
+     }
+
+
+</div>
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&display=swap');
+
+    .table {
+        font-size: 18px;
+        font-weight: 400;
+        font-family: 'Comfortaa', cursive;
+    }
+</style>
+
+

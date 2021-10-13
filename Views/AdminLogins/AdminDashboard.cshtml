@@ -1,0 +1,260 @@
+﻿@model EasyFly.Models.AdminLogin
+
+@{
+    ViewBag.Title = "AdminDashboard";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+
+    var TotalFlightRevenue = ViewBag.TotalFlightRevenue;
+    var TotalFlightsThisMonth = ViewBag.TotalFlightsThisMonth;
+    var TotalFlightsOnThisDay = ViewBag.TotalFlightsOnThisDay;
+    var TotalFlightsExpenses = ViewBag.TotalFlightsExpenses;
+    var count = 0;
+}
+
+<!doctype html>
+<!--<meta http-equiv="refresh" content="3">-->
+<html lang="en">
+<body>
+    <!-- General Report -->
+    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalFlightRevenue</h1>
+                        <div class="h2 text-green-700 fad fa-dollar-sign"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Flight Revnue</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalFlightsThisMonth</h1>
+                        <div class="h2 text-indigo-700 fad fa-calendar-check"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Flights this month</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalFlightsOnThisDay</h1>
+                        <div class="h2 text-red-700 fad fa-plane"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Flights on air today</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalFlightsExpenses</h1>
+                        <div class="h2 text-yellow-700 fad fa-money-check-alt"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Expenses</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+
+    </div>
+
+    <!-- strat Analytics -->
+    <div class="mt-4 grid grid-cols-2 gap-6 xl:grid-cols-1">
+        <!-- update section -->
+        <div class="card bg-teal-400 border-teal-400 shadow-md text-white">
+            <div class="card-body flex flex-row">
+
+                <!-- image -->
+                <div class="img-wrapper w-40 h-40 flex justify-center items-center">
+                    <img src="~/Photos/Logo/R.png">
+                </div>
+                <!-- end image -->
+                <!-- info -->
+                <div class="py-2 ml-10">
+                    <h1 class="h6">EasyFly!</h1>
+                    <p class="text-white text-xs">Status</p>
+
+                    <ul class="mt-4">
+                        <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Admin</li>
+                        <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Single User</li>
+                        <li class="text-sm font-light"><i class="fad fa-check-double mr-2"></i> Company User</li>
+                    </ul>
+                </div>
+                <!-- end info -->
+
+            </div>
+        </div>
+        <!-- end update section -->
+    </div>
+    <!-- end Analytics -->
+    <!-- start quick Info -->
+    <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
+        <!-- Start Recent Bookings -->
+        <div class="card col-span-3 xl:col-span-1">
+            <div class="card-header" style="font-size:large;font-weight:bold">Recent Passenger Flight Bookings: </div>
+
+            <table class="table-auto w-full text-left">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 border-r"></th>
+                        <th class="px-4 py-2 border-r">FlightID</th>
+                        <th class="px-4 py-2 border-r">Aircraft</th>
+                        <th class="px-4 py-2 border-r">From - To</th>
+                        <th class="px-4 py-2 border-r">Departure</th>
+                        <th class="px-4 py-2 border-r">No. of Passengers</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600">
+
+
+                    @{
+
+                        count = 0;
+
+                        foreach (var item in ViewBag.RecentPassengerBookedflightList)
+                        {
+                            count++;
+
+                            <tr>
+                                @if (count % 2 == 0 && count % 3 != 0)
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-green-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+                                else if (count % 2 != 0 && count % 3 == 0)
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-red-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+                                else if (count % 2 == 0 && count % 3 == 0)
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-blue-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+                                else
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-purple-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+
+                                <td class="border border-l-0 px-4 py-2">@item.FlightID</td>
+                                <td class="border border-l-0 px-4 py-2">@item.AirCraftID</td>
+                                <td class="border border-l-0 px-4 py-2">@item.From1 - @item.To1</td>
+                                <td class="border border-l-0 px-4 py-2">@item.DepartureDate</td>
+                                <td class="border border-l-0 px-4 py-2">@item.AvailableSeats</td>
+
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+        <hr />
+        <div class="card col-span-3 xl:col-span-1">
+            <div class="card-header" style="font-size:large;font-weight:bold">Recent Cargo Flight Bookings: </div>
+
+            <table class="table-auto w-full text-left">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 border-r"></th>
+                        <th class="px-4 py-2 border-r">FlightID</th>
+                        <th class="px-4 py-2 border-r">Aircraft</th>
+                        <th class="px-4 py-2 border-r">From - To</th>
+                        <th class="px-4 py-2 border-r">Departure</th>
+                        <th class="px-4 py-2 border-r">No. of Cargo Units</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600">
+
+
+                    @{
+                        count = 0;
+
+                        foreach (var item in ViewBag.RecentCargoBookedflightList)
+                        {
+                            count++;
+
+                            <tr>
+                                @if (count % 2 == 0 && count % 3 != 0)
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-green-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+                                else if (count % 2 != 0 && count % 3 == 0)
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-red-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+                                else if (count % 2 == 0 && count % 3 == 0)
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-blue-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+                                else
+                                {
+                                    <td class="border border-l-0 px-4 py-2 text-center text-purple-500"><i class="fad fa-arrow-alt-circle-right" /></td>
+                                }
+
+                                <td class="border border-l-0 px-4 py-2">@item.FlightID</td>
+                                <td class="border border-l-0 px-4 py-2">@item.AirCraftID</td>
+                                <td class="border border-l-0 px-4 py-2">@item.From1 - @item.To1</td>
+                                <td class="border border-l-0 px-4 py-2">@item.DepartureDate</td>
+                                <td class="border border-l-0 px-4 py-2">@item.AvailableSeats</td>
+
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+        <!-- End Recent Bookings -->
+
+
+    </div>
+    <!-- end quick Info -->
+
+</body>
+</html>
+
+
+

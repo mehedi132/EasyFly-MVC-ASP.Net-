@@ -1,0 +1,40 @@
+﻿@model EasyFly.Models.CustomerSupport
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CustomerSupport</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyUserLog.C_Photos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyUserLog.C_Photos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SingleUserLog.S_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SingleUserLog.S_Email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,144 @@
+﻿@model IEnumerable<EasyFly.Models.SingleUserLog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+
+    var TotalUsers = ViewBag.TotalUsers;
+    var TotalPassengers = ViewBag.TotalPassengers;
+    var TotalNextPassengers = ViewBag.TotalNextPassengers;
+}
+
+
+<!doctype html>
+<html lang="en">
+<body>    
+    <!-- General Report -->
+    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalUsers</h1>
+                        <div class="h2 text-green-700 fad fa-users"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Number of Single Users</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalPassengers</h1>
+                        <div class="h2 text-indigo-700 fad fa-user-check"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Total Passengers till now</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">@TotalNextPassengers</h1>
+                        <div class="h2 text-red-700 fad fa-plane-departure"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Next Passengers</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+        <!-- card -->
+        <div class="report-card">
+            <div class="card">
+                <div class="card-body flex flex-col">
+
+                    <!-- top -->
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="h4 num-4">0</h1>
+                        <div class="h2 text-yellow-700 fad fa-plane-arrival"></div>
+                    </div>
+                    <!-- end top -->
+                    <!-- bottom -->
+                    <div class="mt-7"> <p style="font-weight:bold">Arrived Passengers</p> </div>
+                    <!-- end bottom -->
+
+                </div>
+            </div>
+            <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+        </div>
+        <!-- end card -->
+
+    </div>
+
+    <!-- Start Data Table -->
+    <div class="card col-span-2 xl:col-span-1">
+
+        <div class="card-header" style="font-weight:bold">Single Users Data</div>
+
+
+        <table class="table-auto w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-r">Users</th>
+                    <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.S_UserID)</th>
+                    <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.S_Email)</th>
+                    <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.FirstName)</th>
+                    <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.LastName)</th>
+                    <th class="px-4 py-2 border-r">@Html.DisplayNameFor(model => model.Gender)</th>
+                    <th class="px-4 py-2 border-r"></th>
+                </tr>
+            </thead>
+
+            <tbody class="text-gray-600">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="border border-l-0 px-4 py-2"><img src="@Url.Content(item.S_Photos)" width="50" height="50" /></td>
+                        <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.S_UserID)</td>
+                        <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.S_Email)</td>
+                        <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td class="border border-l-0 px-4 py-2">@Html.DisplayFor(modelItem => item.Gender)</td>
+                        <td class="border border-l-0 px-4 py-2">
+                            @Html.ActionLink("Details", "Details", new { id = item.S_UserID })|
+                            @Html.ActionLink("Edit", "Edit", new { id = item.S_UserID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.S_UserID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

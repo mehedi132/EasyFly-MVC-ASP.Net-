@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EasyFlycomDatabaseModelStoreContainer" CdmEntityContainer="EasyFlycomDatabaseEntities">
+    <EntitySetMapping Name="AircraftInfoes">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.AircraftInfo">
+        <MappingFragment StoreEntitySet="AircraftInfo">
+          <ScalarProperty Name="AC_Type" ColumnName="AC_Type" />
+          <ScalarProperty Name="AC_ID" ColumnName="AC_ID" />
+          <ScalarProperty Name="AC_Name" ColumnName="AC_Name" />
+          <ScalarProperty Name="PassengerCapacity" ColumnName="PassengerCapacity" />
+          <ScalarProperty Name="CargoCapacity" ColumnName="CargoCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyUserLogs">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.CompanyUserLog">
+        <MappingFragment StoreEntitySet="CompanyUserLog">
+          <ScalarProperty Name="C_UserID" ColumnName="C_UserID" />
+          <ScalarProperty Name="C_Photos" ColumnName="C_Photos" />
+          <ScalarProperty Name="C_Email" ColumnName="C_Email" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_Passkey" ColumnName="C_Passkey" />
+          <ScalarProperty Name="DateEstd" ColumnName="DateEstd" />
+          <ScalarProperty Name="C_ContactNo" ColumnName="C_ContactNo" />
+          <ScalarProperty Name="C_CountryName" ColumnName="C_CountryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="DutyStatus" ColumnName="DutyStatus" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="E_Email" ColumnName="E_Email" />
+          <ScalarProperty Name="E_Photos" ColumnName="E_Photos" />
+          <ScalarProperty Name="E_Name" ColumnName="E_Name" />
+          <ScalarProperty Name="E_Age" ColumnName="E_Age" />
+          <ScalarProperty Name="E_ContactNo" ColumnName="E_ContactNo" />
+          <ScalarProperty Name="E_Designation" ColumnName="E_Designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlightInfoes">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.FlightInfo">
+        <MappingFragment StoreEntitySet="FlightInfo">
+          <ScalarProperty Name="FlightType" ColumnName="FlightType" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="AirCraftID" ColumnName="AirCraftID" />
+          <ScalarProperty Name="From1" ColumnName="From1" />
+          <ScalarProperty Name="To1" ColumnName="To1" />
+          <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="ClassType" ColumnName="ClassType" />
+          <ScalarProperty Name="Pilot1" ColumnName="Pilot1" />
+          <ScalarProperty Name="Pilot2" ColumnName="Pilot2" />
+          <ScalarProperty Name="CabinCrew1" ColumnName="CabinCrew1" />
+          <ScalarProperty Name="CabinCrew2" ColumnName="CabinCrew2" />
+          <ScalarProperty Name="CabinCrew3" ColumnName="CabinCrew3" />
+          <ScalarProperty Name="Assistant1" ColumnName="Assistant1" />
+          <ScalarProperty Name="Assistant2" ColumnName="Assistant2" />
+          <ScalarProperty Name="Fare" ColumnName="Fare" />
+          <ScalarProperty Name="AvailableSeats" ColumnName="AvailableSeats" />
+          <ScalarProperty Name="BookedSeats" ColumnName="BookedSeats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelInfoes">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.HotelInfo">
+        <MappingFragment StoreEntitySet="HotelInfo">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="HotelAddress" ColumnName="HotelAddress" />
+          <ScalarProperty Name="HotelMail" ColumnName="HotelMail" />
+          <ScalarProperty Name="BusinessCapacity" ColumnName="BusinessCapacity" />
+          <ScalarProperty Name="EconomyCapacity" ColumnName="EconomyCapacity" />
+          <ScalarProperty Name="HotelPhotos" ColumnName="HotelPhotos" />
+          <ScalarProperty Name="EcoRent" ColumnName="EcoRent" />
+          <ScalarProperty Name="BusiRent" ColumnName="BusiRent" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SingleUserLogs">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.SingleUserLog">
+        <MappingFragment StoreEntitySet="SingleUserLog">
+          <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+          <ScalarProperty Name="S_Email" ColumnName="S_Email" />
+          <ScalarProperty Name="S_Photos" ColumnName="S_Photos" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="S_Passkey" ColumnName="S_Passkey" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="S_ContactNo" ColumnName="S_ContactNo" />
+          <ScalarProperty Name="S_Country" ColumnName="S_Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerSupports">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.CustomerSupport">
+        <MappingFragment StoreEntitySet="CustomerSupport">
+          <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+          <ScalarProperty Name="C_UserID" ColumnName="C_UserID" />
+          <ScalarProperty Name="UserAdminConvo" ColumnName="UserAdminConvo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="FlightRating" ColumnName="FlightRating" />
+          <ScalarProperty Name="Feedback1" ColumnName="Feedback1" />
+          <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Memberships">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.Membership">
+        <MappingFragment StoreEntitySet="Membership">
+          <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+          <ScalarProperty Name="MemberStatus" ColumnName="MemberStatus" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PassengerFlights">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.PassengerFlight">
+        <MappingFragment StoreEntitySet="PassengerFlight">
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+          <ScalarProperty Name="NoOfSeats" ColumnName="NoOfSeats" />
+          <ScalarProperty Name="SeatNumbers" ColumnName="SeatNumbers" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="TotalHotelRent" ColumnName="TotalHotelRent" />
+          <ScalarProperty Name="TotalFlightFare" ColumnName="TotalFlightFare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CargoFlights">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.CargoFlight">
+        <MappingFragment StoreEntitySet="CargoFlight">
+          <ScalarProperty Name="TotalCargoFare" ColumnName="TotalCargoFare" />
+          <ScalarProperty Name="ProductUnit" ColumnName="ProductUnit" />
+          <ScalarProperty Name="ProductWeight" ColumnName="ProductWeight" />
+          <ScalarProperty Name="ProductDimension" ColumnName="ProductDimension" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="C_UserID" ColumnName="C_UserID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageInfoes">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.PackageInfo">
+        <MappingFragment StoreEntitySet="PackageInfo">
+          <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+          <ScalarProperty Name="PackageDesc" ColumnName="PackageDesc" />
+          <ScalarProperty Name="PackageSubDesc" ColumnName="PackageSubDesc" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="HotelImage" ColumnName="HotelImage" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookedPackages">
+      <EntityTypeMapping TypeName="EasyFlycomDatabaseModel.BookedPackage">
+        <MappingFragment StoreEntitySet="BookedPackages">
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="NoOfPerson" ColumnName="NoOfPerson" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+          <ScalarProperty Name="S_UserID" ColumnName="S_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

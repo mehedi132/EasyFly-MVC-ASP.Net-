@@ -1,0 +1,75 @@
+﻿@model EasyFly.Models.PackageInfo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PackageInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageSubDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageSubDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackagePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackagePrice)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

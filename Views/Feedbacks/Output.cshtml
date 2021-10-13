@@ -1,0 +1,66 @@
+﻿@model IEnumerable<EasyFly.Models.Feedback>
+@{ 
+
+}
+
+
+<html>
+<head>
+    <link href="~/Content/Comments.css" rel="stylesheet" />
+
+</head>
+
+<body style="background-color:white">
+
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <img src="https://i.imgur.com/CFpa3nK.jpg" width="20" height="20" class="d-inline-block align-top rounded-circle" alt=""> <a class="navbar-brand ml-2" href="#" data-abc="true">Rib Simpson</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="end">
+            <div class="collapse navbar-collapse" id="navbarColor02">
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Body -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-md-6 col-12 pb-4">
+                    <h1 style="color:black">Comments</h1>
+
+                    @foreach (var a in Model)
+                    {
+                        <div class="comment mt-4 text-justify" style="width: 80%; margin-top: 20px;">
+                            <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+                            <h4>@a.S_UserID</h4> <br>
+                            <p>@a.Feedback1</p>
+                        </div>
+                    }
+
+
+                </div>
+
+                <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+                    <form action="Output" method="post" id="algin-form">
+                        <div class="form-group">
+                            <h4>Leave a feedback</h4>
+
+                            <label for="message">Message</label> <textarea name="Feedback1" id="" msg cols="30" rows="5" class="form-control" style="background-color: white;"> </textarea>
+                            <label for="rating">Flight Rating</label> <textarea name="FlightRating" id="" msg cols="30" rows="1" class="form-control" style="background-color: white;"> </textarea>
+                        </div>
+
+                        <div class="form-group">            
+                            <input type="submit" id="post" class="btn">
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
